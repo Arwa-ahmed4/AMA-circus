@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Tickets Page</title>
+        <title>Ticket - AMA Circus</title>
 
         <link rel="stylesheet" href="Common.css">
 
@@ -12,55 +12,97 @@
                 text-align: center;
                 color: rgb(180, 78, 73);
                 font-family: "Comic Sans MS", cursive;
+                margin-bottom: 25px;
             }
 
-            .box {
-                border: 2px solid #ccc;
-                border-radius: 8px;
+            /* تصميم التذكرة */
+            .ticket {
+                border: 2px solid #333;
+                border-radius: 15px;
                 padding: 20px;
+                width: 60%;
                 margin: 20px auto;
-                width: 80%;
-                background: #fafafa;
+                background: #fff;
+                font-size: 16px;
+                line-height: 1.7;
+                box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+                animation: fadeIn .4s ease-in-out;
             }
 
-            label {
+            .ticket {
+                border: 3px dashed #b84b48;
+                border-radius: 20px;
+                background: linear-gradient(135deg, #fff7e6 0%, #ffe5e0 100%);
+                position: relative;
+                width: 60%;
+                margin: 20px auto;
+                padding: 25px;
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+            }
+
+            .ticket::before,
+            .ticket::after {
+                content: "⭐";
+                position: absolute;
+                color: #e04b3f;
+                font-size: 22px;
+            }
+
+            .ticket::before {
+                top: 10px;
+                left: 15px;
+            }
+
+            .ticket::after {
+                bottom: 10px;
+                right: 15px;
+            }
+
+            .ticket h2 {
+                color: #b84b48;
+                font-family: "Comic Sans MS", cursive;
+                text-align: center;
+                margin-bottom: 15px;
+                font-size: 22px;
+                letter-spacing: 1px;
+            }
+
+            .ticket table {
+                width: 100%;
+                font-size: 16px;
+                color: #333;
+            }
+
+            .ticket th {
+                text-align: left;
+                padding-right: 10px;
+                color: #444;
+            }
+
+
+            .ticket h2 {
+                text-align: center;
+                margin-bottom: 14px;
+                color: rgb(180, 78, 73);
+            }
+
+            table {
+                width: 100%;
+            }
+
+            th {
+                width: 40%;
+                color: #444;
+            }
+
+            .back-home {
                 display: block;
-                margin-top: 10px;
-                font-weight: bold;
-            }
-
-            input {
-                width: 95%;
-                padding: 6px;
-                margin-top: 5px;
-                border: 1px solid #888;
-                border-radius: 4px;
-            }
-
-            button {
-                margin-top: 15px;
-                padding: 10px 20px;
-                border: none;
-                background: rgba(193, 32, 64, 0.66);
-                color: white;
-                font-size: 14px;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            }
-
-            button:hover {
-                transform: translateY(7px);
-                background: rgba(0, 77, 64, 0.44);
-            }
-
-            button:active {
-                transform: scale(1.1);
-                background: rgba(180, 0, 40, 0.92);
+                width: fit-content;
+                margin: 30px auto;
+                text-align: center;
             }
 
         </style>
-
     </head>
 
     <body>
@@ -81,41 +123,15 @@
             </nav>
         </header>
 
-        <h1>Pay Information</h1>
+        <h1>Your Tickets</h1>
 
-        <div class="box">
-            <form>
+        <!--  هنا يتم إنشاء تذاكر متعددة -->
+        <div id="ticketsContainer"></div>
 
-                <h3>💳 Payment Information</h3>
+        <!--  زر الرجوع -->
+        <a href="Project(Home).php" class="circus-btn btn-secondary back-home">Back to Home</a>
 
-                <label for="card">Card Number</label>
-                <input type="text" id="card" placeholder="1111 2222 3333 4444" maxlength="16" required/>
-
-                <label for="name">Cardholder Name</label>
-                <input type="text" id="name" placeholder="Name on Card" required/>
-
-                <label for="expiration">Expiration Date</label>
-                <input type="month" id="expiration" required/>
-
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" placeholder="123" maxlength="3" required/>
-
-                <br><hr><br>
-
-                <div id="seatsNamesContainer">
-                    <h3>🎟️ Tickets Names</h3>
-                </div>
-
-                <button id="confirmPay" class="circus-btn btn-primary">Confirm Payment ✅</button>
-
-            </form>
-        </div>
-
-        <div class="confirm-box">
-            <a href="Project(Home).php" class="circus-btn btn-secondary right-btn">Back to Home</a>
-        </div>
-
-        <script src="pay.js"></script>
+        <script src="ticket.js"></script>
 
 
     </body>
