@@ -1,0 +1,151 @@
+body {
+    font-family: 'Cairo', sans-serif;
+    margin: 0;
+    color: #333;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+    background-color: rgba(0, 77, 64, 0.57); 
+    border-radius: 5px;
+    flex-direction: row-reverse;
+}
+.logo {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* مسافة بين AMA والأفتار */
+}
+
+.avatar-link {
+  text-decoration: none;   /* يشيل الخط */
+  font-size: 22px;         /* يكبر الإيموجي شوي */
+  margin-left: 10px;       /* مسافة بين AMA والإيموجي */
+  cursor: pointer;
+}
+
+.avatar-link:hover {
+  text-decoration: none;   /* حتى عند المرور ما يطلع خط */
+  color: #f0f0f0;          /* تغيير اللون عند المرور */
+}
+
+
+
+.logout-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.logout-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  color: #f0f0f0;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 0;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    color: #f0f0f0;
+}
+
+header nav a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* توحيد التأثير للكروت  */
+.card:hover,
+.card-label:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+    transition: 0.3s ease;
+}
+
+/* توحيد التأثير للأزرار  */
+button:hover,
+.card-btn:hover,
+.buy-ticket-button:hover,
+.back:hover,
+.next:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.18);
+    transition: 0.3s ease;
+}
+
+/* Back Button  */
+.back {
+    padding: 10px 20px;
+    background-color: #c25b56;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.back:active {
+    transform: scale(0.98);
+}
+
+.circus-btn {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+    padding: 12px 26px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 9999px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.25s ease, background-color 0.25s, box-shadow 0.25s;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+}
+
+.btn-primary {
+    background-color: rgba(193, 32, 64, 0.66);
+}
+.btn-primary:hover {
+    background-color: rgba(193, 32, 64, 0.85);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(193, 32, 64, 0.4);
+}
+.btn-primary:active {
+    transform: scale(0.96);
+}
+
+.btn-secondary {
+    background-color: rgba(0, 77, 64, 0.57);
+}
+.btn-secondary:hover {
+    background-color: rgba(0, 77, 64, 0.8);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,77,64,0.3);
+}
+.btn-secondary:active {
+    transform: scale(0.96);
+}
