@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tickets Page</title>
+
+        <link rel="stylesheet" href="Common.css">
+
+        <style>
+
+            h1 {
+                text-align: center;
+                color: rgb(180, 78, 73);
+                font-family: "Comic Sans MS", cursive;
+            }
+
+            .box {
+                border: 2px solid #ccc;
+                border-radius: 8px;
+                padding: 20px;
+                margin: 20px auto;
+                width: 80%;
+                background: #fafafa;
+            }
+
+            label {
+                display: block;
+                margin-top: 10px;
+                font-weight: bold;
+            }
+
+            input {
+                width: 95%;
+                padding: 6px;
+                margin-top: 5px;
+                border: 1px solid #888;
+                border-radius: 4px;
+            }
+
+            button {
+                margin-top: 15px;
+                padding: 10px 20px;
+                border: none;
+                background: rgba(193, 32, 64, 0.66);
+                color: white;
+                font-size: 14px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            button:hover {
+                transform: translateY(7px);
+                background: rgba(0, 77, 64, 0.44);
+            }
+
+            button:active {
+                transform: scale(1.1);
+                background: rgba(180, 0, 40, 0.92);
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <header class="hero-section">
+            <nav class="navbar">
+                <div class="logo">
+                    AMA
+                    <a href="logout.php" class="logout-link">Logout</a>
+                    <a href="update.php" class="avatar-link">⚙️</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="Project(Home).php" class="active"> Home </a></li>
+                    <li><a href="show bage.html"> Shows </a></li>
+                    <li><a href="project_ticket.html"> Tickets </a></li>
+                    <li><a href="Project(Contact).html"> Contact </a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h1>Pay Information</h1>
+
+        <div class="box">
+            <form>
+
+                <h3>💳 Payment Information</h3>
+
+                <label for="card">Card Number</label>
+                <input type="text" id="card" placeholder="1111 2222 3333 4444" maxlength="16" required/>
+
+                <label for="name">Cardholder Name</label>
+                <input type="text" id="name" placeholder="Name on Card" required/>
+
+                <label for="expiration">Expiration Date</label>
+                <input type="month" id="expiration" required/>
+
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" placeholder="123" maxlength="3" required/>
+
+                <br><hr><br>
+
+                <div id="seatsNamesContainer">
+                    <h3>🎟️ Tickets Names</h3>
+                </div>
+
+                <button id="confirmPay" class="circus-btn btn-primary">Confirm Payment ✅</button>
+
+            </form>
+        </div>
+
+        <div class="confirm-box">
+            <a href="Project(Home).php" class="circus-btn btn-secondary right-btn">Back to Home</a>
+        </div>
+
+        <script src="pay.js"></script>
+
+
+    </body>
+</html>
