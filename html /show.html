@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Shows Page</title>
+
+        <link rel="stylesheet" href="Common.css">
+
+
+        <style>
+
+            h1 {
+                text-align: center;
+                color: rgb(180, 78, 73);
+                font-family: "Comic Sans MS", cursive;
+            }
+
+            .page-organization {
+                display: grid;
+                grid-template-columns: repeat(3,1fr);
+                padding: 20px;
+                gap: 60px;
+                width: fit-content;
+                margin: 0 auto;
+            }
+
+            .date-info {
+                display: flex;
+                gap: 15px;
+                justify-content: center;
+                align-items: center;
+                margin: 30px auto 50px;
+            }
+
+            .date-info label {
+                font-weight: 600;
+                font-size: 30px;
+                color: #333;
+            }
+
+            .date-info input {
+                width: 250px;
+                font-size: 22px;
+                padding: 15px 20px;
+                border: 3px solid #000;
+                border-radius: 8px;
+                text-align: center;
+                background-color: #fff;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+            .date-info input:focus {
+                box-shadow: 0 0 8px rgba(0, 0, 0, 0.9);
+            }
+
+            .card-label {
+                height: 450px;
+                width: 350px;
+                border: 2px solid;
+                border-radius: 8px;
+                padding: 15px;
+                text-align: center;
+                font-size: large;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .card-label:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            }
+
+            .card-label.selected {
+                border: 3px solid #4CAF50;
+                box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+                background-color: rgba(76, 175, 80, 0.05);
+            }
+
+            .image-label {
+                height: 200px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .buy-ticket-button {
+                display: inline-block;
+                background-color: #C25B56;
+                color: #FCF8E8;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 5px;
+                margin-top: 15px;
+                transition: all 0.3s ease;
+                cursor: pointer;
+            }
+
+            .buy-ticket-button:hover {
+                background-color: #a4342e;
+                transform: translateY(-3px);
+                box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            }
+
+            .confirm-selection {
+                text-align: center;
+                margin: 30px 0;
+                width: 100%;
+            }
+
+            #confirmSelectionBtn {
+                display: none;
+            }
+        </style>
+
+    </head>
+
+    <body>
+
+
+        <header class="hero-section">
+            <nav class="navbar">
+                <div class="logo">
+                    AMA
+                    <a href="logout.php" class="logout-link">Logout</a>
+                    <a href="update.php" class="avatar-link">⚙️</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="Project(Home).php">Home</a></li>
+                    <li><a href="show bage.html" class="active">Shows</a></li>
+                    <li><a href="project_ticket.html">Tickets</a></li>
+                    <li><a href="Project(Contact).html">Contact</a></li>
+                </ul>
+            </nav>
+        </header> 
+
+
+        <main>
+
+            <h1>Upcoming Shows</h1>
+            <section class="date-info">
+                <label for="date">Choose a Date:</label>
+                <input type="date" id="date" name="date">
+            </section>
+
+            <section class="page-organization">
+
+                <article class="card-label" data-show="Globe Walking" data-date="October 5" data-time="9:30 AM" data-price="45">
+                    <figure class="image-label"> 
+                        <img src="images/1ca99155-822d-49e9-98f0-503ff9dacad7.jpg" alt="Globe Walking Show" style="max-width: 100%;max-height:100%;">
+                    </figure>
+
+                    <p>🎭 <strong>Name of Show:</strong> Globe Walking</p>
+                    <p>⏰ <strong>Time:</strong> 9:30 AM</p>
+                    <p>🗓️ <strong>Date:</strong> October 5</p>
+                    <p>🎟️ <strong>Price of Ticket:</strong> 45 Riyal</p>
+                    <p>✨ <strong>Ages 12+</strong></p>
+
+                    <a href="#" class="buy-ticket-button"><strong>Buy Ticket</strong></a>
+                </article>
+
+                <article class="card-label" data-show="Clowns" data-date="October 8" data-time="10:00 PM" data-price="45">
+                    <figure class="image-label"> 
+                        <img src="images/c6b252e6-4e2e-48f8-aba9-ddfa136e4ff3.jpg" alt="Clowns Show" style="max-width: 100%;max-height:100%;">
+                    </figure>
+
+                    <p>🎭 <strong>Name of Show:</strong> Clowns</p>
+                    <p>⏰ <strong>Time:</strong> 10:00 PM</p>
+                    <p>🗓️ <strong>Date:</strong> October 8</p>
+                    <p>🎟️ <strong>Price of Ticket:</strong> 45 Riyal</p>
+                    <p>✨ <strong>Ages 16+</strong></p>
+
+                    <a href="#" class="buy-ticket-button"><strong>Buy Ticket</strong></a>
+                </article>
+
+                <article class="card-label" data-show="Tightrope Walking" data-date="October 10" data-time="10:30 PM" data-price="20">
+                    <figure class="image-label"> 
+                        <img src="images/2fe2b23a-e200-4c2d-9b6f-1fd33cee7920.jpg" alt="Tightrope Show" style="max-width: 100%;max-height:100%;">
+                    </figure>
+
+                    <p>🎭 <strong>Name of Show:</strong> Tightrope Walking</p>
+                    <p>⏰ <strong>Time:</strong> 10:30 PM</p>
+                    <p>🗓️ <strong>Date:</strong> October 10</p>
+                    <p>🎟️ <strong>Price of Ticket:</strong> 20 Riyal</p>
+                    <p>✨ <strong>Ages 12+</strong></p>
+
+                    <a href="#" class="buy-ticket-button"><strong>Buy Ticket</strong></a>
+                </article>
+
+                <article class="card-label" data-show="Magic Show" data-date="November 3" data-time="8:30 PM" data-price="30">
+                    <figure class="image-label"> 
+                        <img src="images/b379c602-81c5-49a9-a2ed-104f6b1baf01.jpg" alt="Magic Show" style="max-width: 100%;max-height:100%;">
+                    </figure>
+
+                    <p>🎭 <strong>Name of Show:</strong> Magic Show</p>
+                    <p>⏰ <strong>Time:</strong> 8:30 PM</p>
+                    <p>🗓️ <strong>Date:</strong> November 3</p>
+                    <p>🎟️ <strong>Price:</strong> 30 Riyal</p>
+                    <p>✨ <strong>Ages 6+</strong></p>
+
+                    <a href="#" class="buy-ticket-button"><strong>Buy Ticket</strong></a>
+                </article>
+
+                <article class="card-label" data-show="Light Show" data-date="November 3" data-time="9:00 PM" data-price="30">
+                    <figure class="image-label"> 
+                        <img src="images/4d5839ad-f203-4526-8444-43c9e5646416.jpg" alt="Light Show" style="max-width: 100%;max-height:100%;">
+                    </figure>
+
+                    <p>🎭 <strong>Name:</strong> Light Show</p>
+                    <p>⏰ <strong>Time:</strong> 9:00 PM</p>
+                    <p>🗓️ <strong>Date:</strong> November 3</p>
+                    <p>🎟️ <strong>Price:</strong> 30 Riyal</p>
+                    <p>✨ <strong>Ages 12+</strong></p>
+
+                    <a href="#" class="buy-ticket-button"><strong>Buy Ticket</strong></a>
+                </article>
+
+                <article class="card-label" data-show="Fire Show" data-date="December 9" data-time="8:30 PM" data-price="25">
+                    <figure class="image-label"> 
+                        <img src="images/6888f155-1f4a-4e6a-bdc0-4c4e87617558 (1).jpg" alt="Fire Show" style="max-width: 100%;max-height:100%;">
+                    </figure>
+
+                    <p>🎭 <strong>Name:</strong> Fire Show</p>
+                    <p>⏰ <strong>Time:</strong> 8:30 PM</p>
+                    <p>🗓️ <strong>Date:</strong> December 9</p>
+                    <p>🎟️ <strong>Price:</strong> 25 Riyal</p>
+                    <p>✨ <strong>Ages 16+</strong></p>
+
+                    <a href="#" class="buy-ticket-button"><strong>Buy Ticket</strong></a>
+                </article>
+
+            </section>
+
+            <section class="confirm-selection">
+                <a href="#" class="circus-btn btn-primary" id="confirmSelectionBtn">Confirm Selection</a>
+            </section>
+
+        </main>
+
+        <script src="show-cart.js"></script>
+
+    </body>
+</html>
