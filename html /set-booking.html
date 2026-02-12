@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Seat Booking - AMA Circus</title>
+
+        <!-- Common Styles -->
+        <link rel="stylesheet" href="Common.css">
+
+        <style>
+            h1 {
+                text-align: center;
+                color: rgb(180, 78, 73);
+                font-family: "Comic Sans MS", cursive;
+                margin: 30px 0;
+            }
+
+            .booking-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            .show-info {
+                background: white;
+                border-radius: 15px;
+                padding: 25px;
+                margin-bottom: 30px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                text-align: center;
+            }
+
+            .show-info h2 {
+                color: rgb(180, 78, 73);
+                margin-bottom: 15px;
+            }
+
+            .show-details {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                flex-wrap: wrap;
+                font-size: 16px;
+                color: #666;
+            }
+
+            .show-details span {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .stage-container {
+                background: white;
+                border-radius: 15px;
+                padding: 40px;
+                margin-bottom: 30px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+
+            .stage {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                text-align: center;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 40px;
+                font-size: 24px;
+                font-weight: bold;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+
+            .seats-grid {
+                display: grid;
+                grid-template-columns: repeat(10, 1fr);
+                gap: 10px;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+            }
+
+            .seat {
+                aspect-ratio: 1;
+                border: 2px solid #ddd;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                font-weight: bold;
+                background: #f0f0f0;
+                position: relative;
+            }
+
+            .seat:hover:not(.selected) {
+                transform: scale(1.1);
+                border-color: rgb(180, 78, 73);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            }
+
+            .seat.available {
+                background: #4CAF50;
+                color: white;
+                border-color: #45a049;
+            }
+
+            .seat.selected {
+                background: rgb(180, 78, 73);
+                color: white;
+                border-color: rgb(150, 58, 53);
+                transform: scale(1.05);
+            }
+
+            .legend {
+                display: flex;
+                justify-content: center;
+                gap: 30px;
+                margin: 30px 0;
+                flex-wrap: wrap;
+            }
+
+            .legend-item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .legend-box {
+                width: 30px;
+                height: 30px;
+                border-radius: 5px;
+                border: 2px solid;
+            }
+
+            .legend-box.available {
+                background: #4CAF50;
+                border-color: #45a049;
+            }
+
+            .legend-box.selected {
+                background: rgb(180, 78, 73);
+                border-color: rgb(150, 58, 53);
+            }
+
+            .booking-summary {
+                background: white;
+                border-radius: 15px;
+                padding: 25px;
+                margin-bottom: 30px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            }
+
+            .booking-summary h3 {
+                color: rgb(180, 78, 73);
+                margin-bottom: 20px;
+                text-align: center;
+            }
+
+            .summary-info {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+
+            .summary-item {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                background: #f8f8f8;
+                border-radius: 8px;
+            }
+
+            .summary-item.total {
+                grid-column: 1 / -1;
+                background: rgb(180, 78, 73);
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+            }
+
+            .selected-seats {
+                margin: 20px 0;
+                padding: 15px;
+                background: #f8f8f8;
+                border-radius: 8px;
+                min-height: 50px;
+            }
+
+            .selected-seats-title {
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #333;
+            }
+
+            .seat-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .seat-tag {
+                background: rgb(180, 78, 73);
+                color: white;
+                padding: 5px 12px;
+                border-radius: 20px;
+                font-size: 14px;
+                display: inline-flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .seat-tag .remove {
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            .booking-actions {
+                display: flex;
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .booking-actions button,
+            .booking-actions a {
+                flex: 1;
+                padding: 15px 30px;
+                font-size: 18px;
+                font-weight: bold;
+                border-radius: 50px;
+                text-decoration: none;
+                border: none;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                text-align: center;
+            }
+
+            .btn-back {
+                background: rgba(0, 77, 64, 0.57);
+                color: white;
+            }
+
+            .btn-back:hover {
+                background: rgba(0, 77, 64, 0.8);
+                transform: translateY(-3px);
+            }
+
+            .btn-confirm {
+                background: rgba(193, 32, 64, 0.66);
+                color: white;
+            }
+
+            .btn-confirm:hover:not(:disabled) {
+                background: rgba(193, 32, 64, 0.9);
+                transform: translateY(-3px);
+            }
+
+            .btn-confirm:disabled {
+                background: #ccc;
+                cursor: not-allowed;
+                transform: none;
+            }
+
+            @media (max-width: 768px) {
+                .seats-grid {
+                    grid-template-columns: repeat(5, 1fr);
+                    gap: 8px;
+                }
+
+                .summary-info {
+                    grid-template-columns: 1fr;
+                }
+
+                .booking-actions {
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <header class="hero-section">
+            <nav class="navbar">
+                <div class="logo">
+                    AMA
+                    <a href="logout.php" id="logoutLink" class="logout-link">Logout</a>
+                    <a href="update.php" class="avatar-link">⚙️</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="Project(Home).php">Home</a></li>
+                    <li><a href="show bage.html">Shows</a></li>
+                    <li><a href="project_ticket.html">Tickets</a></li>
+                    <li><a href="Project(Contact).html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <h1>🎪 Select Your Seats</h1>
+
+        <main class="booking-container">
+
+            <section class="show-info" id="showInfo">
+                <h2 id="showName">Select a Show</h2>
+                <div class="show-details">
+                    <span>📅 <strong id="showDate">-</strong></span>
+                    <span>⏰ <strong id="showTime">-</strong></span>
+                    <span>💵 <strong id="showPrice">-</strong> Riyal per seat</span>
+                </div>
+            </section>
+
+            <!-- Stage and Seats -->
+            <section class="stage-container">
+                <h3 class="stage">🎭 STAGE 🎭</h3>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-box available"></div>
+                        <span>Available</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-box selected"></div>
+                        <span>Selected</span>
+                    </div>
+                </div>
+                <div class="seats-grid" id="seatsGrid"></div>
+            </section>
+
+            <aside class="booking-summary">
+                <h3>📋 Booking Summary</h3>
+
+                <div class="selected-seats">
+                    <div class="selected-seats-title">Selected Seats:</div>
+                    <div class="seat-tags" id="selectedSeatsList">
+                        <span style="color: #999;">No seats selected</span>
+                    </div>
+                </div>
+
+                <div class="summary-info">
+                    <div class="summary-item">
+                        <span>Seats Selected:</span>
+                        <strong id="seatCount">0</strong>
+
+                    </div>
+
+                    <div class="summary-item">
+                        <span>Price per Seat:</span>
+                        <strong id="pricePerSeat">0 Riyal</strong>
+                    </div>
+
+                    <div class="summary-item total">
+                        <span>Total Amount:</span>
+                        <strong id="totalAmount">0 Riyal</strong>
+                    </div>
+                </div>
+
+                <div class="booking-actions">
+                    <a href="show bage.html" class="btn-back">← Back to Shows</a>
+                    <button class="btn-confirm" id="confirmBtn" disabled>Confirm Booking</button>
+                </div>
+            </aside>
+
+        </main>
+        <script src="seats-booking.js"></script>
+
+    </body>
+</html> 
+
+
+
+
+
